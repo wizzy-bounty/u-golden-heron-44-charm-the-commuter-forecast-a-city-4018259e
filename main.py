@@ -20,7 +20,12 @@ FORECAST = (
 )
 
 
+MAX_CHARS = 140
+
+
 def main() -> None:
+    if len(FORECAST) > MAX_CHARS:
+        raise ValueError(f"forecast is {len(FORECAST)} chars, over the {MAX_CHARS} limit")
     out_path = os.environ.get("MAKEFUN_OUTPUT", "/output/entry.txt")
     parent = os.path.dirname(out_path)
     if parent:
